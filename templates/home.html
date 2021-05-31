@@ -1,0 +1,21 @@
+{% extends 'layout.html'  %}
+
+
+{% block title %} Home {% endblock %}
+{% block content %}
+
+<div class="row" >
+    <div class="col-md-6 col-md-offset-3">
+        {% if session['name'] %}
+        <p>You loged in as {{ session['name'] }}</p>
+        <p>Your email is {{ session['email'] }}</p>
+        <p>The type of account is a  {{ session['category'] }}</p>
+        {% else %}
+        <p>Thank you and stay safe</p>
+        <a href="/" > Go back home  </a>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

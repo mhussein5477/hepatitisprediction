@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Hepatitis prediction Account</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+
+    <!-- Custom CSS -->
+    <link href="static/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
+    <!-- Custom CSS -->
+    <link href="static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+   
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+      
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6" style="margin-top: 0%; background-color: rgb(21, 36, 65);">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav" >
+                    <ul id="sidebarnav" style="background-color:  rgb(21, 36, 65);">
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <i class="fas fa-user-circle" style="margin-left: 35%; margin-top: -11%; font-size: 52px; color: #ffff"></i>
+              
+                        </span>
+                        <br>
+                       <h6 style="margin-left:22%;margin-top: 8%; color:rgb(219, 219, 219);"> {{ session['name'] }}</h6>
+                        <!-- User Profile-->
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard"
+                                aria-expanded="false" style="color: rgb(219, 219, 219);">
+                                <i class="fas fa-home" aria-hidden="true"  style="color: rgb(219, 219, 219);"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        {% if session['category'] == 'doctor' or  session['category'] == 'admin'  %}
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/patients"
+                                aria-expanded="false" style="color: rgb(219, 219, 219);">
+                                <i class="fa fa-user" aria-hidden="true" style="color: rgb(219, 219, 219);"></i>
+                                <span class="hide-menu" >Patients</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                       
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/doctors"
+                                aria-expanded="false" style="color: rgb(219, 219, 219);">
+                                <i class="fa fa-table" aria-hidden="true" style="color: rgb(219, 219, 219);"></i>
+                                <span class="hide-menu">Doctors</span>
+                            </a>
+                        </li>
+                        {% if session['category'] == 'doctor' or  session['category'] == 'admin'  %}
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="\analysis"
+                                aria-expanded="false">
+                                <i class="fa fa-font" aria-hidden="true" style="color: rgb(219, 219, 219);"></i>
+                                <span class="hide-menu" style="color: rgb(219, 219, 219);">Analysis</span>
+                            </a>
+                        </li>
+                        
+                        {% endif %}
+                        <li class="text-center p-20 upgrade-btn">
+                            <a href="/logout"
+                                class="btn d-grid btn-danger text-white" target="_blank">
+                                Logout</a>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb bg-white">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Analysis</h4>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <div class="d-md-flex">
+                            {% if session['category'] == 'admin' %}
+                            <ol class="breadcrumb ms-auto">
+                                <li><a href="#" class="fw-normal" style="font-size: 18px;">Admin's Account</a></li>
+                            </ol>
+                            {% endif %}
+
+                            {% if session['category'] == 'doctor' %}
+                            <ol class="breadcrumb ms-auto">
+                                <li><a href="#" class="fw-normal" style="font-size: 18px;">Doctor's Account</a></li>
+                            </ol>
+                            {% endif %}
+
+                            {% if session['category'] == 'user' %}
+                            <ol class="breadcrumb ms-auto">
+                                <li><a href="#" class="fw-normal" style="font-size: 18px;">Patient's Account</a></li>
+                            </ol>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Three charts -->
+                <!-- ============================================================== -->
+              
+                <!-- ============================================================== -->
+                <!-- PRODUCTS YEARLY SALES -->
+                <!-- ============================================================== -->
+               
+                <!-- ============================================================== -->
+                <!-- RECENT SALES -->
+                <!-- ============================================================== -->
+              
+                <!-- ============================================================== -->
+                <!-- Recent Comments -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- .col -->
+                    <div class="col-md-12 col-lg-8 col-sm-12">
+                        <div class="card white-box p-0">
+                            <div class="card-body">
+                                <h3 class="box-title mb-0">Analysis</h3>
+                            </div>
+                  
+                           <div style="padding: 3%;">
+                            <img class="img-fluid" src="static/images/analysisimage.png" alt="alternative" style="width: 70%;">
+                            <img class="img-fluid" src="static/images/agetoclass.png" alt="alternative" style="width: 70%; margin-top: 2%;">
+                            <img class="img-fluid" src="/imageplot" alt="alternative" style="width: 75%; margin-top: 2%;">
+                            <img class="img-fluid" src="static/images/albumin.png" alt="alternative" style="width: 75%; margin-top: 2%;">
+                           </div>
+                        </div>
+                    </div>
+               
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center"> 2021 © Hepatitis prediction by <a
+                    href="#">HUSSEIN MOHAMED ALI</a>
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="static/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="static/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/app-style-switcher.js"></script>
+    <script src="static/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="static/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="static/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="static/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="static/plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="static/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="static/js/pages/dashboards/dashboard1.js"></script>
+</body>
+
+</html>
